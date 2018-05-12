@@ -5,16 +5,15 @@ $("#login").on('click',function(){
         dataType: "json",
         data:{
           user: $("#username").val(),
-          password: $("#password").value()
+          password: $("#password").val()
         },
-        succcess: function(data){
-           if(data.succcess){
-                alert("Success!");
-           }
-           else{
+        success: function(data){
+           if(JSON.stringify(data))
+              alert("Success");
+           else
               alert("Fail");
-           }
-        }
+
+        },
         error: function(){
             alert("Network error");
         }
