@@ -8,10 +8,8 @@ $("#login").on('click',function(){
           password: $("#password").val()
         },
         success: function(data){
-           if(JSON.stringify(data))
-              alert("Success");
-           else
-              alert("Fail");
+          alert(JSON.stringify(data)))
+//           $("#password").val(JSON.stringify(data)[1])
 
         },
         error: function(){
