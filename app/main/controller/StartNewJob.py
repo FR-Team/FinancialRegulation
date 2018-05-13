@@ -1,5 +1,6 @@
 from app.main.model import DataProcess as dp
 from flask import jsonify,request
+from app.main import main
 
 
 @main.route('/get_property', methods=['GET'])
