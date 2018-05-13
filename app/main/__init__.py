@@ -10,3 +10,4 @@ main = Blueprint('main', __name__, static_folder='static',
 
 from . import view
 from .login import login
+from .controller import StartNewJob
