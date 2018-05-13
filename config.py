@@ -1,29 +1,37 @@
+# -*- encoding: utf-8 -*-
+
 import os
 
-class Config:
-    SECRET_KEY = os.getenv('SECRET_KEY') or 'some string'
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'this is a secret string'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     @staticmethod
     def init_app(app):
         pass
 
-class DevelopmentConfig(Config):
-    '''开发环境配置'''
+class DevelopmentConfig(config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URI')
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+    # 'sqlite:///' + os.path.join(basedir, 'dev')
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@localhost:3306/chinavis2018?charset=utf8'
 
-class TestingConfig(Config):
-    '''测试环境配置'''
+class TestingConfig(config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = xxxx
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
+    # 'sqlite:///' + os.path.join(basedir, 'test')
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@localhost:3306/chinavis2018?charset=utf8'
 
-class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = xxx
+class ProductionConfig(config):
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+    # 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@localhost:3306/chinavis2018?charset=utf8'
 
 config = {
-    'development':DevelopmentConfig,
-    'testing':TestingConfig,
-    'production':ProductionConfig,
-    'default':DevelopmentConfig
-}#用一个字典来统合地给出所有配置
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'production': ProductionConfig,
+    'default': DevelopmentConfig
+}

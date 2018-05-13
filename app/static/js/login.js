@@ -17,3 +17,21 @@ $("#login").on('click',function(){
         }
       })
 });
+
+$("#register").on('click',function(){
+      $.ajax({
+        type: "GET",
+        url: "/register",
+        dataType: "json",
+        data:{
+          user: $("#username").val(),
+          password: $("#password").val()
+        },
+        success: function(data){
+          alert(JSON.stringify(data))
+        },
+        error: function(){
+            alert("Network error");
+        }
+      })
+});
