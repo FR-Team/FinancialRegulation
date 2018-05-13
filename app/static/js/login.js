@@ -8,7 +8,7 @@ $("#login").on('click',function(){
           password: $("#password").val()
         },
         success: function(data){
-          alert(JSON.stringify(data)))
+          alert(JSON.stringify(data))
 //           $("#password").val(JSON.stringify(data)[1])
 
         },
