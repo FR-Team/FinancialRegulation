@@ -1,6 +1,7 @@
 from app.main.model import DataProcess as dp
-from flask import jsonify,request
+from flask import jsonify, request
 from app.main import main
+import os
 
 
 @main.route('/get_property', methods=['GET'])
@@ -15,3 +16,11 @@ def get_result():
     id = request.args.get('id')
     filename = id + ".csv"
     return jsonify(dp.kmeans_process(property_list, filename))
+
+
+@main.route('/upload_file', methods=['POST'])
+def upload_file():
+    file = request.files['the_file']
+    fid = "fid"
+    file.save(os.path.abspath('..') + '\\' + 'data')
+    return ""
